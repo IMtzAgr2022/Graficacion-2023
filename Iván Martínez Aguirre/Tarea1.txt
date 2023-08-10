@@ -1,0 +1,25 @@
+Instrucción para la Tarea 1: 
+Implementar la evaluación de polinomios de grado 1 y 2 en lenguaje Nim, utilizando la técnica de Horner.
+
+
+Desarrollo de la Tarea 1:
+
+
+proc evaluarPolinomioHorner(x, coeficientes: array[float]): float =
+    # Evaluamos el polinomio utilizando el método de Horner
+    var resultado: float = coeficientes[high(coeficientes)]
+    for i in high(coeficientes) - 1..0 by -1:
+        resultado = resultado * x + coeficientes[i]
+    return resultado
+
+# Ejemplo de uso para un polinomio de grado 1: f(x) = ax + b
+var coeficientesGrado1: array[float] = [b, a]  # Cambiar los valores de 'a' y 'b'
+var xGrado1: float = 2.0
+
+echo "Para x =", xGrado1, "el valor del polinomio de grado 1 es:", evaluarPolinomioHorner(xGrado1, coeficientesGrado1)
+
+# Ejemplo de uso para un polinomio de grado 2: f(x) = ax^2 + bx + c
+var coeficientesGrado2: array[float] = [c, b, a]  # Cambiar los valores de 'a', 'b' y 'c'
+var xGrado2: float = 3.0
+
+echo "Para x =", xGrado2, "el valor del polinomio de grado 2 es:", evaluarPolinomioHorner(xGrado2, coeficientesGrado2)
