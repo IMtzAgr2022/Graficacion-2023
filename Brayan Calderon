@@ -1,15 +1,1 @@
-#Tarea 1
-#Escribir la evaluación de un polinomio usando el metodo Horner
-#polinomio de ejemplo 3x^3 - 6x^2 + 2x - 8
 
-
-proc Polinomio(coeficientes: seq[float], x: float): float =
-    var resultado: float = 0.0
-    for i in countdown(high(coeficientes), 0):
-        resultado = resultado * x + coeficientes[i]
-    return resultado
-
-var coeficientes: seq[float] = @[3.0, -6.0, 2.0, -8.0]
-var x: float = 2.0
-var resultado = Polinomio(coeficientes, x)
-echo "Resultado de evaluar el polinomio en x =", x, ": ", resultado
