@@ -18,5 +18,5 @@ when isMainModule:
   let i = 3
   let n = 6
   let u = 0.2
-  let result = Bernstein(i, n, u)
-  echo "El resultado del polinomio de Bernstein es: ", result
+  let resultado = Bernstein(i, n, u)
+  echo "El resultado del polinomio de Bernstein es: ", resultado
