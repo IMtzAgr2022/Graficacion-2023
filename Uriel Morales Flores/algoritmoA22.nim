@@ -1,4 +1,5 @@
-# ALGORITHM A2.2
+# ALGORITMO DE CLASE A2.2 
+#14/NOV/2023
 var U: seq[float64] = @[0.0, 0.0, 0.0, 1.0, 1.0, 1.0];
 var p: int = 2;
 var i: int = 1;
