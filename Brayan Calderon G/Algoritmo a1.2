@@ -1,0 +1,14 @@
+Bernstein(i,n,u,B)
+{ 
+	/* Compute the value of a Bernstein polynomial. */
+	/* Input: i,n,u */
+	/* Output: B */
+for (j=O; j<=n; j++)   /* compute the columns */
+				temp[j] = 0.0; /* of Table 1.1 */
+			temp[n-i] = 1.0; /* in a temporary array */
+ul = 1.0-u;
+for (k=l; k<=n; k++)
+for (j=n; j>=k; j--)
+	temp[j] = ul*temp[j] + u*temp[j-l];
+B = temp[n]; 
+}
