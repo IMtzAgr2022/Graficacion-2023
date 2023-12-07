@@ -1,0 +1,57 @@
+var U: seq[float64] = @[0.0, 0.0, 0.0, 1.0, 1.0, 1.0]
+# Primeo se define un vector de nodos U para la curva B-Spline.
+
+var i: int = 1
+# Luego se inicializa la variable i con el valor 1.
+
+var u: float64 = 0.5
+# Inicializa la variable u con el valor 0.5.
+
+proc basisFuns(i: int, u: float64, p: int, U: seq[float64]): seq[float64] =
+  # Define una función llamada basisFuns que calcula las funciones fundamentales.
+  var N: seq[float64] = newSeq[float64]()
+  # Inicializa un vector N para almacenar las funciones fundamentales.
+
+  var left: seq[float64] = newSeq[float64](p + 1)
+  var right: seq[float64] = newSeq[float64](p + 1)
+  # Inicializa vectores left y right para almacenar valores temporales.
+
+  var temp: float64
+  var saved: float64
+  # Inicializa variables temporales para cálculos intermedios.
+
+  N.add(1.0)
+  # Agrega el primer valor 1.0 a N, ya que N[0] siempre es 1.
+
+  for j in 1..p:
+    # Bucle para calcular las funciones fundamentales para cada grado j.
+    left[j] = u - U[i + 1 - j]
+    right[j] = U[i + j] - u
+    # Calcula valores temporales left y right.
+
+    saved = 0.0
+    # Inicializa saved para el cálculo de funciones fundamentales.
+
+    for r in 0..<j:
+      # Bucle interno para realizar cálculos recursivos.
+      if right[r + 1] == -left[j - r]:
+        temp = 1
+      else:
+        temp = N[r] / (right[r + 1] + left[j - r])
+        # Calcula temp, evitando divisiones por cero.
+
+      echo N[r], '\t', right[r + 1], '\t', left[j - r]
+      # Imprime valores temporales para depuración.
+
+      N[r] = saved + right[r + 1] * temp
+      saved = left[j - r] * temp
+      # Actualiza N[r] y saved en cada iteración.
+
+    N.add(saved)
+    # Agrega el valor calculado a N.
+
+  result = N
+  # Devuelve el vector de funciones fundamentales calculado.
+
+echo basisFuns(i, u, 2, U)
+# Llama a la función basisFuns con parámetros específicos e imprime el resultado.

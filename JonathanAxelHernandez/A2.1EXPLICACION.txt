@@ -1,0 +1,46 @@
+proc findSpan(n, p: int, u: float, U: seq[float]): int =
+  # Define un procedimiento llamado findSpan que encuentra el índice del intervalo de nodos.
+  var
+    low, high, mid: int
+    result = -1  # Inicializa la variable result con un valor predeterminado.
+
+  if u == U[n + 1]:
+    return n
+    # Verifica si u es igual al último elemento de U y, en ese caso, devuelve el índice n.
+
+  low = p
+  high = n + 1
+  mid = (low + high) div 2
+  # Inicializa variables low, high y mid para la búsqueda binaria.
+
+  while u < U[mid] or u >= U[mid + 1]:
+    # Bucle que realiza la búsqueda binaria.
+    if u < U[mid]:
+      high = mid
+    else:
+      low = mid
+
+    mid = (low + high) div 2
+    # Actualiza low, high y mid en cada iteración.
+
+  result = mid
+  # Almacena el índice encontrado en la variable result.
+
+  result  # Devuelve el resultado al final del procedimiento.
+
+proc main() =
+  # Define un procedimiento principal llamado main.
+  let n = 5
+  let p = 2
+  let u = 4.5
+  let U: seq[float] = @[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+  # Define variables n, p, u y U.
+
+  let result = findSpan(n, p, u, U)
+  # Llama a la función findSpan con los parámetros especificados.
+
+  echo "Resultado de findSpan:", result
+  # Imprime el resultado de findSpan.
+
+main()
+# Llama al procedimiento principal main para ejecutar el código.
